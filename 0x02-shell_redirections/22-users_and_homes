@@ -1,2 +1,2 @@
 #!/bin/bash
-sort /etc/passwd | cut -d ":" -f 1,6
+cut -c1 | tr -d '\n'| xargs echo
