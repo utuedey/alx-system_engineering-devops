@@ -5,7 +5,7 @@ apt-get -y install software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get -y update
 apt-get -y install haproxy=1.8.\*
-sed -i '/errorfile 504/a listen thelaura' /etc/haproxy/haproxy.cfg
+sed -i '/errorfile 504/a listen theJoseph' /etc/haproxy/haproxy.cfg
 sed -i '/listen thelaura/a         bind :80' /etc/haproxy/haproxy.cfg
 sed -i '/bind :80/a         mode http' /etc/haproxy/haproxy.cfg
 sed -i '/mode http/a         server 92165-web-01 100.26.239.160:80 check' /etc/haproxy/haproxy.cfg
