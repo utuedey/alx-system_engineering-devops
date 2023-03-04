@@ -41,8 +41,8 @@ listen utuedeye
         bind :80
         mode http
         balance roundrobin
-        server 652-web-01 35.190.176.186:80 check
-        server 652-web-02 35.196.156.157:80 check
+        server 92165-web-01 54.237.43.66:80 check
+        server 92165-web-02 54.90.51.231:80 check
 
 frontend www-http
         bind :80
@@ -50,11 +50,11 @@ frontend www-http
         default_backend web-backend
 
 frontend www-https
-        bind :443 ssl crt /etc/haproxy/ssl/www.thelaura.tech.pem
+        bind :443 ssl crt /etc/haproxy/cert/www.utuedeye.tech.pem
         reqadd X-Forwarded-Proto:\ https	
         default_backend web-backend
 
 backend web-backend
         http-request redirect scheme https code 301 if !{ ssl_fc }
-        server 652-web-01 35.190.176.186:80 check
-        server 652-web-02 35.196.156.157:80 check
+        server 92165-web-01 54.237.43.66:80 check
+        server 92165-web-02 54.90.51.231:80 check

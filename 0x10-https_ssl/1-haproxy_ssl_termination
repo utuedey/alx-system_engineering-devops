@@ -46,13 +46,14 @@ listen utuedeye
 
 frontend www-http
         bind :80
-        reqadd X-Forwarded-Proto:\ http
+        bind :443 ssl crt /etc/haproxy/certs/www.utuedeye.tech.pem
+	stats uri /haproxy?stats
         default_backend web-backend
 
 frontend www-https
         bind :443 ssl crt /etc/haproxy/ssl/www.utuedeye.tech.pem
         reqadd X-Forwarded-Proto:\ https
-        default_backend web-backend
+   
 
 backend web-backend
         redirect scheme https if !{ ssl_fc }
